@@ -6,6 +6,9 @@ import com.example.retrofitmvvm.Util.AppException
 import com.example.retrofitmvvm.Util.Coroutines
 import com.example.retrofitmvvm.Util.NetworkException
 import com.example.retrofitmvvm.api.AuthListner
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainViewModel(private val mainRepo: MainRepo): ViewModel() {
 
@@ -14,7 +17,7 @@ class MainViewModel(private val mainRepo: MainRepo): ViewModel() {
    fun getNotiDetails() {
        authListner?.onStarted()
 
-        Coroutines.main{
+        CoroutineScope(Dispatchers.Main).launch {
             try {
                 val getNotiDetails =  mainRepo.getNotiDetails()
                 authListner?.onSuccess(getNotiDetails)

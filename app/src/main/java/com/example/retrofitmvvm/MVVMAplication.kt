@@ -20,7 +20,7 @@ class MVVMAplication : Application(), KodeinAware {
         import(androidXModule(this@MVVMAplication))
 
         bind() from singleton { Intecepter(instance()) }
-        bind() from singleton { ApiService(instance()) }
+//        bind() from singleton { ApiService(instance()) }
         bind() from singleton { MainRepo(instance()) }
         bind() from provider { MainViewModelFactory(instance()) }
 

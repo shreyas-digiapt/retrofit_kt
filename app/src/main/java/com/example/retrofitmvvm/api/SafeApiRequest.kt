@@ -1,8 +1,6 @@
 package com.example.retrofitmvvm.api
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.retrofitmvvm.Util.AppException
 import org.json.JSONException
 import org.json.JSONObject
@@ -24,7 +22,7 @@ abstract class SafeApiRequest {
             val message = StringBuilder()
             error.let {
                 try {
-                    message.append(JSONObject(it).getString("message"))
+                    message.append(JSONObject(it!!).getString("message"))
                 }catch (e: JSONException) {}
                 message.append("\n")
             }

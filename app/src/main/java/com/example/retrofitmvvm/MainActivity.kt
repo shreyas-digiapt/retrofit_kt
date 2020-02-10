@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), AuthListner{
 
 
         val network = Intecepter(this)
-        val apiService = ApiService(network)
+        val apiService = ApiService()
         val repo = MainRepo(apiService)
         val factory = MainViewModelFactory(repo)
         viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
@@ -49,7 +49,8 @@ class MainActivity : AppCompatActivity(), AuthListner{
     }
 
     override fun onSuccess(data: List<Dummy>) {
-        Log.d("test_123", "pass: ${data.get(0).id}")
+        for (datas in data)
+        Log.d("test_123", "pass: ${datas}")
     }
 
     override fun onFailure(message: String?) {
